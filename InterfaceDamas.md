@@ -1,23 +1,28 @@
 import tkinter as tk
-JanelaTabuleiro = tk.Tk()
-JanelaTabuleiro.title("Tabuleiro")
-TamanhoTab = 8
-def CorQuadrado(linha, coluna):
-    if (linha + coluna) % 2 == 0:
+#declarações variáveis
+janelaTabuleiro = tk.Tk()
+janelaTabuleiro.title("Tabuleiro")
+tamanhoTab = 8
+
+#Função para definir cores das posições
+def corQuadrado(l, c):
+    if (l + c) % 2 == 0:
         return "white"
     else:
         return "black"
-def ClicarQuadrado(clique):
-    coluna = clique.widget.coluna
-    linha = clique.widget.linha
-    print(f"Clique no quadrado ({linha}, {coluna})")
-for linha in range(TamanhoTab):
-    for coluna in range(TamanhoTab):
-        Cor = CorQuadrado(linha, coluna)
-        Quadrado = tk.Frame(JanelaTabuleiro, width=70, height=70, background=Cor)
-        Quadrado.grid(row=linha, column=coluna)
-        Quadrado.linha = linha
-        Quadrado.coluna = coluna
-        Quadrado.bind("<Button-1>", ClicarQuadrado)
+#Função para reconhecimento do clique no mouse
+def clicarQuadrado(clique):
+    col = clique.widget.coluna
+    lin = clique.widget.linha
+    print(f"Clique no quadrado ({lin}, {col})")
+#Criar os quadrados
+for linha in range(tamanhoTab,0,-1):
+    for coluna in range(tamanhoTab):
+        cor = corQuadrado(linha, coluna)
+        quadrado = tk.Frame(janelaTabuleiro, width=70, height=70, background=cor)
+        quadrado.grid(row=linha, column=coluna)
+        quadrado.linha = linha
+        quadrado.coluna = coluna
+        quadrado.bind("<Button-1>", clicarQuadrado)
 
-JanelaTabuleiro.mainloop()
+janelaTabuleiro.mainloop()
