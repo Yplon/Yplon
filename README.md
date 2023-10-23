@@ -13,11 +13,11 @@ def ClicarQuadrado(clique):
     print(f"Clique no quadrado ({linha}, {coluna})")
 for linha in range(n):
     for coluna in range(n):
-        color = CorQuadrado(linha, coluna)
-        square = tk.Frame(JanelaTabuleiro, width=70, height=70, background=color)
-        square.grid(row=linha, column=coluna)
-        square.linha = linha
-        square.coluna = coluna
-        square.bind("<Button-1>", ClicarQuadrado)
+        Cor = CorQuadrado(linha, coluna)
+        Quadrado = tk.Frame(JanelaTabuleiro, width=70, height=70, background=Cor)
+        Quadrado.grid(row=linha, column=coluna)
+        Quadrado.linha = linha
+        Quadrado.coluna = coluna
+        Quadrado.bind("<Button-1>", ClicarQuadrado)
 
 JanelaTabuleiro.mainloop()
